@@ -4,6 +4,10 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Navbar from "./components/navbar/navbar";
 import "./index.css";
 import "./reset.css";
+import Home from "./components/pages/home/home";
+import About from "./components/pages/abouut/about";
+import Contact from "./components/pages/contact/contact";
+import Products from "./components/pages/products/products";
 
 const theme = createTheme({
   palette: {
@@ -25,13 +29,16 @@ function App() {
           <Box className="content">
             <Switch>
               <Route exact path="/">
-                <Typography>Home</Typography>
+                <Home />
               </Route>
               <Route path="/about">
-                <Typography>About</Typography>
+                <About />
               </Route>
               <Route path="/contact">
-                <Typography>Contact</Typography>
+                <Contact />
+              </Route>
+              <Route path="/products">
+                <Products />
               </Route>
             </Switch>
           </Box>

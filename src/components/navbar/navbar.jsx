@@ -1,68 +1,32 @@
-import MailIcon from "@mui/icons-material/Mail";
-import InboxIcon from "@mui/icons-material/MoveToInbox";
-import { Box } from "@mui/material";
-import Divider from "@mui/material/Divider";
-import Drawer from "@mui/material/Drawer";
-import List from "@mui/material/List";
-import ListItem from "@mui/material/ListItem";
-import ListItemButton from "@mui/material/ListItemButton";
-import ListItemIcon from "@mui/material/ListItemIcon";
-import ListItemText from "@mui/material/ListItemText";
-import React, { useState } from "react";
+import { Box, Button } from "@mui/material";
+import React, { useEffect, useState } from "react";
+import MenuButton from "./menu-button";
 import classes from "./navbar.module.css";
-import MenuIcon from "@mui/icons-material/Menu";
+import Menu from "./menu";
 
 const Navbar = () => {
-  const [open, setOpen] = useState(false);
+  const [openMenu, setOpenMenu] = useState(false);
+  const [translateValue, setTranslateValue] = useState(0);
 
-  const openMenu = (newOpen) => {
-    setOpen(newOpen);
-  };
-
-  const DrawerList = (
-    <Box sx={{ width: 250 }} role="presentation" onClick={openMenu(false)}>
-      <List>
-        {["Inbox", "Starred", "Send email", "Drafts"].map((text, index) => (
-          <ListItem key={text} disablePadding>
-            <ListItemButton>
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItemButton>
-          </ListItem>
-        ))}
-      </List>
-      <Divider />
-      <List>
-        {["All mail", "Trash", "Spam"].map((text, index) => (
-          <ListItem key={text} disablePadding>
-            <ListItemButton>
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItemButton>
-          </ListItem>
-        ))}
-      </List>
-    </Box>
-  );
+  useEffect(() => {
+    setTranslateValue(openMenu ? 0 : -40);
+  }, [openMenu]);
 
   return (
     <Box className={classes.navbar} bgcolor="#dedede">
-      <Box>
-        <MenuIcon onClick={() => openMenu(true)} fontSize="large" />
-      </Box>
+      <Button
+        onClick={() => setOpenMenu((prev) => !prev)}
+        sx={{ padding: 0, margin: 0, borderRadius: "100px" }}
+      >
+        <MenuButton translateValue={translateValue} />
+      </Button>
       <img
         className={classes.logomobile}
         src="/logo-mobile.png"
         alt="veky logo"
       />
 
-      <Drawer open={open} onClose={openMenu(false)}>
-        {DrawerList}
-      </Drawer>
+      <Menu open={openMenu} setOpen={setOpenMenu} />
     </Box>
   );
 };
