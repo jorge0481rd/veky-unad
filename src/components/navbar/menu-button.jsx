@@ -1,5 +1,6 @@
 import { Box } from "@mui/material";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import Menu from "@mui/icons-material/Menu";
 import classes from "./menu-button.module.css";
 
 const MenuButton = ({ translateValue }) => {
@@ -9,10 +10,10 @@ const MenuButton = ({ translateValue }) => {
         className={classes.content}
         sx={{
           transform: `translateY(${translateValue}px)`,
-          outline: translateValue > 0 ? "solid 1px red" : "",
         }}
       >
         <ArrowBackIcon fontSize="large" />
+        <Menu fontSize="large" />
       </Box>
     </Box>
   );
