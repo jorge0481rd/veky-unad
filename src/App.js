@@ -1,24 +1,43 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { Box, createTheme, ThemeProvider, Typography } from "@mui/material";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import Navbar from "./components/navbar/navbar";
+import "./index.css";
+import "./reset.css";
+
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: "#73473D",
+    },
+    secondary: {
+      main: "#F294A5",
+    },
+  },
+});
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ThemeProvider theme={theme}>
+      <Router>
+        <Box className="App">
+          <Navbar />
+          <Box className="content">
+            <Switch>
+              <Route exact path="/">
+                <Typography>Home</Typography>
+              </Route>
+              <Route path="/about">
+                <Typography>About</Typography>
+              </Route>
+              <Route path="/contact">
+                <Typography>Contact</Typography>
+              </Route>
+            </Switch>
+          </Box>
+        </Box>
+      </Router>
+    </ThemeProvider>
   );
 }
 

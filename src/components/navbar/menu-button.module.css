@@ -1,0 +1,11 @@
+
+.menubutton{
+	overflow: hidden;		
+}
+
+.content{
+	display: flex;
+	flex-direction: column;
+	height: 40px;
+	transition: all 200ms ease-in-out;
+}
