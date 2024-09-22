@@ -1,15 +1,19 @@
 import React from "react";
+import useMyContext from '../../../context/useMyContext';
+import MyContainer from '../../compositions/container/container';
+import Card from '../../compositions/card/card';
+
 
 const Products = () => {
+	const { setTitle } = useMyContext()
+	setTitle("Productos")
   return (
-    <div>
-      <h1>Products</h1>
-      <h1>Products</h1>
-      <h1>Products</h1>
-      <h1>Products</h1>
-      <h1>Products</h1>
-      <h1>Products</h1>
-    </div>
+    <MyContainer>
+      <Card />
+      <Card />
+      <Card />
+      <Card />
+    </MyContainer>
   );
 };
 
