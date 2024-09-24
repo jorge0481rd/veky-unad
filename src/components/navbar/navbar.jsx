@@ -13,7 +13,14 @@ const Navbar = () => {
   }, [openMenu]);
 
   return (
-    <Box className={classes.navbar} bgcolor="#dedede">
+    <Box
+      className={classes.navbar}
+      sx={{
+        background:
+          "linear-gradient(180deg, rgba(222,222,222,1) 0%, rgba(255,255,255,1) 53%, rgba(255,255,255,1) 100%)",
+        padding: 1,
+      }}
+    >
       <Button
         onClick={() => setOpenMenu((prev) => !prev)}
         sx={{ padding: 0, margin: 0, borderRadius: "100px" }}
