@@ -31,6 +31,8 @@ const ProductCard = ({ info }) => {
         flexDirection: "column",
         gap: 1,
         cursor: "pointer",
+        position: "relative",
+        zIndex: -1,
       }}
     >
       <img src={productImg} alt="producto" width={250} height={300} />

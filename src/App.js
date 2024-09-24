@@ -9,7 +9,7 @@ import About from "./components/pages/abouut/about";
 import Contact from "./components/pages/contact/contact";
 import Products from "./components/pages/products/products";
 import TitleBar from "./components/compositions/title-bar/title-bar";
-import { MyContextProvider } from "./context/MyContext"
+import { MyContextProvider } from "./context/MyContext";
 
 const theme = createTheme({
   palette: {
