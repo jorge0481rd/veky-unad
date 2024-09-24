@@ -65,8 +65,19 @@ const ProductCard = ({ info }) => {
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
+            position: "relative",
           }}
         >
+          <Typography
+            sx={{
+              fontSize: "0.7rem",
+              top: -10,
+              left: "1rem",
+              position: "absolute",
+            }}
+          >
+            cantidad
+          </Typography>{" "}
           <Button
             onClick={decreaseQuantity}
             disabled={quantity <= 1}
