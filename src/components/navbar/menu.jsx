@@ -1,11 +1,5 @@
 import React from "react";
-import {
-  Box,
-  ListItemText,
-  MenuItem,
-  MenuList,
-  Paper,
-} from "@mui/material";
+import { Box, ListItemText, MenuItem, MenuList, Paper } from "@mui/material";
 import { Link } from "react-router-dom";
 
 const Menu = ({ open, setOpen }) => {
@@ -36,6 +30,11 @@ const Menu = ({ open, setOpen }) => {
         }}
       >
         <MenuList>
+          <Link to="/">
+            <MenuItem>
+              <ListItemText>Inicio</ListItemText>
+            </MenuItem>
+          </Link>
           <Link to="/products">
             <MenuItem>
               <ListItemText>Productos</ListItemText>
@@ -54,6 +53,11 @@ const Menu = ({ open, setOpen }) => {
           <Link to="/contact">
             <MenuItem>
               <ListItemText>Contacto</ListItemText>
+            </MenuItem>
+          </Link>
+          <Link to="/cart">
+            <MenuItem>
+              <ListItemText>Carrito</ListItemText>
             </MenuItem>
           </Link>
         </MenuList>

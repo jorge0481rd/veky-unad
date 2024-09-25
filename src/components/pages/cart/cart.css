@@ -1,0 +1,25 @@
+.cart-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+
+}
+.cart-table th{
+	background: #ccc;
+	padding: 10px;
+}
+
+.cart-table td{
+	padding: 10px;
+}
+.cart-table td:nth-child(3){
+	text-align: right;
+}
+
+.cart-table tbody{
+	border-bottom: solid 1px #ccc;
+}
+
+.cart-table tfoot{
+	border-bottom: double 1px #ccc;
+}
