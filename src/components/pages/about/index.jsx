@@ -10,7 +10,7 @@ const About = () => {
   return (
     <MyContainer id="about-us">
       <Typography variant="h5" align="center" paragraph>
-        <strong>Es tiempo de un cabello hermoso!</strong>
+        <strong>¡Es tiempo de un cabello hermoso!</strong>
       </Typography>
       <Typography variant="h6" align="center" paragraph>
         En VekyRD, nos apasiona la belleza y el bienestar. Creemos que cada
@@ -37,7 +37,7 @@ const About = () => {
         </Grid>
         <Grid item xs={12} md={6}>
           <Paper elevation={3} sx={{ padding: 3 }}>
-            <Typography variant="h6" gutterBottom>
+            <Typography variant="h6" gutterBottom textAlign={"center"}>
               Nuestro Equipo
             </Typography>
             <Grid container spacing={2}>
