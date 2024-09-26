@@ -2,7 +2,6 @@ import React from "react";
 import { Box, createTheme, ThemeProvider } from "@mui/material";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Navbar from "./components/navbar/";
-import "./index.css";
 import "./reset.css";
 import Home from "./components/pages/home/";
 import About from "./components/pages/about/";
@@ -14,6 +13,8 @@ import Cart from "./components/pages/cart/";
 import { Provider as ReduxProvider } from "react-redux";
 import store from "./redux/store";
 import Login from "./components/pages/login";
+import Footer from "./components/footer";
+import FloatingCart from "./components/compositions/cart-floating-icon";
 
 const theme = createTheme({
   palette: {
@@ -33,9 +34,18 @@ function App() {
       <ThemeProvider theme={theme}>
         <ReduxProvider store={store}>
           <Router>
-            <Box className="App">
+            <Box
+              className="App"
+              sx={{
+                display: "flex",
+                flexDirection: "column",
+                flexGrow: 1,
+                minHeight: "100vh",
+              }}
+            >
               <Navbar />
               <TitleBar caption="caption" />
+              <FloatingCart itemCount={5} />
               <Box className="content">
                 <Switch>
                   <Route exact path="/">
@@ -58,6 +68,7 @@ function App() {
                   </Route>
                 </Switch>
               </Box>
+              <Footer />
             </Box>
           </Router>
         </ReduxProvider>

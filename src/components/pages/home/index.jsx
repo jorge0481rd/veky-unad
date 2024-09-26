@@ -1,12 +1,13 @@
 import React from "react";
 import useMyContext from "../../../context/useMyContext";
+import MyContainer from "../../compositions/my-container";
 
 const Home = () => {
   const { setTitle } = useMyContext();
   setTitle("Home");
 
   return (
-    <div>
+    <MyContainer id="home">
       <h1>Home</h1>
       <h1>Home</h1>
       <h1>Home</h1>
@@ -41,7 +42,7 @@ const Home = () => {
       <h1>Home</h1>
       <h1>Home</h1>
       <h1>Home</h1>
-    </div>
+    </MyContainer>
   );
 };
 

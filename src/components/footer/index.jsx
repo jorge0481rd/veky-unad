@@ -1,10 +1,10 @@
-// src/components/Footer.js
 import React from "react";
 import { Box, Typography, Link } from "@mui/material";
 
 const Footer = () => {
   return (
     <Box
+      id="footer"
       sx={{
         bgcolor: "primary.main",
         color: "white",
@@ -14,6 +14,7 @@ const Footer = () => {
         width: "100%",
         textAlign: "center",
         mt: 6,
+        alignSelf: "flex-end",
       }}
     >
       <Box

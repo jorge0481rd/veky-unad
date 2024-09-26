@@ -1,6 +1,6 @@
 import React from "react";
 import useMyContext from "../../../context/useMyContext";
-import MyContainer from "../../compositions/container";
+import MyContainer from "../../compositions/my-container";
 import Card from "../../compositions/card";
 import { Box } from "@mui/material";
 
@@ -61,7 +61,7 @@ const Products = () => {
   const { setTitle } = useMyContext();
   setTitle("Productos");
   return (
-    <MyContainer>
+    <MyContainer id="products">
       <Box sx={{ display: "flex", flexWrap: "wrap", justifyContent: "center" }}>
         {products.map((item) => (
           <Card key={item.id} info={item} />
