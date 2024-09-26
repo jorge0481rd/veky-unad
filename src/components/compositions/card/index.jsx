@@ -1,6 +1,6 @@
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
-import { Box, Button, Card, Tooltip, Typography } from "@mui/material";
+import { Box, Button, Card, Slide, Tooltip, Typography } from "@mui/material";
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { addToCart, removeFromCart } from "../../../redux/actions/cartActions";
@@ -68,12 +68,16 @@ const ProductCard = ({ info }) => {
         </Typography>
 
         <QtyControl qty={qty} setQuantity={setQuantity} />
-        <Button onClick={toggleSelected} sx={{ minWidth: 30, padding: "4px" }}>
-          {selected ? (
-            <CheckCircleIcon sx={{ color: "green" }} />
-          ) : (
-            <AddShoppingCartIcon />
-          )}
+        <Button
+          onClick={toggleSelected}
+          sx={{ minWidth: 30, padding: "4px", position: "relatie" }}
+        >
+          <Slide direction="up" in={!selected}>
+            <CheckCircleIcon sx={{ color: "green", position: "absolute" }} />
+          </Slide>
+          <Slide direction="up" in={selected}>
+            <AddShoppingCartIcon sx={{ position: "absolute" }} />
+          </Slide>
         </Button>
       </Box>
     </Card>
