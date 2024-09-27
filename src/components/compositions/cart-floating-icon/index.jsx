@@ -2,9 +2,13 @@ import React from "react";
 import { useHistory } from "react-router-dom";
 import { Badge, IconButton } from "@mui/material";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import { useSelector } from "react-redux";
 
-const FloatingCart = ({ itemCount }) => {
+
+const FloatingCart = () => {
   const history = useHistory();
+	const items = useSelector((state) => state.cart.items);
+	const itemCount = items.length;
 
   const handleCartClick = () => {
     history.push("/cart");

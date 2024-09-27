@@ -72,10 +72,10 @@ const ProductCard = ({ info }) => {
           onClick={toggleSelected}
           sx={{ minWidth: 30, padding: "4px", position: "relatie" }}
         >
-          <Slide direction="up" in={!selected}>
+          <Slide direction="up" in={selected}>
             <CheckCircleIcon sx={{ color: "green", position: "absolute" }} />
           </Slide>
-          <Slide direction="up" in={selected}>
+          <Slide direction="up" in={!selected}>
             <AddShoppingCartIcon sx={{ position: "absolute" }} />
           </Slide>
         </Button>
