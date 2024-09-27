@@ -43,7 +43,7 @@ const Navbar = () => {
           onClick={() => setOpenMenu((prev) => !prev)}
           sx={{ padding: 0, margin: 0, borderRadius: "100px" }}
         >
-          <MenuButton positionValue={positionValue} />
+          <MenuButton openMenu={openMenu} />
         </Button>
         <Link to="/" style={{ flex: "0 1 30%" }}>
           <img
