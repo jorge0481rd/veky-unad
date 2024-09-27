@@ -12,6 +12,7 @@ const Menu = ({ open, setOpen }) => {
         height: open ? "100%" : "0%",
         top: 0,
         left: 0,
+				zIndex: 1000
       }}
     >
       <Paper
