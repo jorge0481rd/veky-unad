@@ -13,7 +13,7 @@ const ProductCard = ({ info }) => {
   const { name, price } = info;
   const dispatch = useDispatch();
 
-  const toggleSelected = ({ qty }) => {
+  const toggleSelected = () => {
     if (!selected) {
       const product = {
         ...info,
@@ -38,9 +38,16 @@ const ProductCard = ({ info }) => {
         gap: 1,
         cursor: "pointer",
         position: "relative",
+        outline: selected ? "solid 2px green" : "none",
       }}
     >
-      <img src={productImg} alt="producto" width={250} height={300} />
+      <img
+        onClick={toggleSelected}
+        src={productImg}
+        alt="producto"
+        width={250}
+        height={300}
+      />
       <Tooltip title={name} arrow>
         <Typography
           sx={{
