@@ -9,7 +9,7 @@ import QtyControl from "../qty-control";
 
 const ProductCard = ({ info }) => {
   const [selected, setSelected] = useState(false);
-  const { id, name, price, qty } = info;
+  const { id, name, price } = info;
   const dispatch = useDispatch();
 
   const toggleSelected = () => {
