@@ -3,6 +3,7 @@ import useMyContext from "../../../context/useMyContext";
 import MyContainer from "../../compositions/my-container";
 import Card from "../../compositions/card";
 import { Box } from "@mui/material";
+import { useSelector } from "react-redux";
 
 const products = [
   {
@@ -60,12 +61,14 @@ const products = [
 const Products = () => {
   const { setTitle } = useMyContext();
   setTitle("Productos");
+  const items = useSelector((state) => state.cart.items);
   return (
     <MyContainer id="products">
       <Box sx={{ display: "flex", flexWrap: "wrap", justifyContent: "center" }}>
-        {products.map((item) => (
-          <Card key={item.id} info={item} />
-        ))}
+        {products.map((item) => {
+          const existsInCart = items.find((el) => el.id === item.id);
+          return <Card key={item.id} info={item} isSelected={existsInCart} />;
+        })}
       </Box>
     </MyContainer>
   );

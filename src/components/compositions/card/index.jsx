@@ -7,8 +7,8 @@ import { addToCart, removeFromCart } from "../../../redux/actions/cartActions";
 import productImg from "./product_img.jpg";
 import QtyControl from "../qty-control";
 
-const ProductCard = ({ info }) => {
-  const [selected, setSelected] = useState(false);
+const ProductCard = ({ info, isSelected }) => {
+  const [selected, setSelected] = useState(isSelected);
   const { id, name, price } = info;
   const dispatch = useDispatch();
 
@@ -16,6 +16,7 @@ const ProductCard = ({ info }) => {
     if (!selected) {
       const product = {
         ...info,
+        selected,
       };
 
       dispatch(addToCart(product));
@@ -46,7 +47,7 @@ const ProductCard = ({ info }) => {
         width={250}
         height={300}
       />
-      <Tooltip title={name} arrow>
+      <Tooltip title={name} arrow placement="top">
         <Typography
           sx={{
             display: "-webkit-box",
@@ -72,7 +73,7 @@ const ProductCard = ({ info }) => {
           <b>${price}</b>
         </Typography>
 
-        <Slide direction="up" in={selected}>
+        <Slide direction="up" in={selected} timeout={400}>
           <div>
             <QtyControl prodId={id} />
           </div>
