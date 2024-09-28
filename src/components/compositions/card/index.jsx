@@ -9,15 +9,13 @@ import QtyControl from "../qty-control";
 
 const ProductCard = ({ info }) => {
   const [selected, setSelected] = useState(false);
-  const [qty, setQuantity] = useState(1);
-  const { name, price } = info;
+  const { id, name, price, qty } = info;
   const dispatch = useDispatch();
 
   const toggleSelected = () => {
     if (!selected) {
       const product = {
         ...info,
-        qty,
       };
 
       dispatch(addToCart(product));
@@ -74,7 +72,11 @@ const ProductCard = ({ info }) => {
           <b>${price}</b>
         </Typography>
 
-        <QtyControl qty={qty} setQuantity={setQuantity} />
+        <Slide direction="up" in={selected}>
+          <div>
+            <QtyControl prodId={id} />
+          </div>
+        </Slide>
         <Button
           onClick={toggleSelected}
           sx={{ minWidth: 30, padding: "4px", position: "relatie" }}

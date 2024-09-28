@@ -1,14 +1,20 @@
 # products search bar
 
-# shopping cart 
+# shopping cart
+
 - fix qty counter
-- align price 
+- align price
 - delete ICON size
 - link to add more products when empty cart
 
-# about us 
+# about us
+
 - add more pictures
 
+# my account
 
-# my account 
 - create my account component
+
+# product card
+
+- click on the em
