@@ -8,13 +8,8 @@ import ROUTES from "../../constants/routes";
 import { checkIsMobile } from "../../utils/checkIsMobile";
 
 const Navbar = () => {
-  const [openMenu, setOpenMenu] = useState(false);
-  const [positionValue, setPositionValue] = useState(0);
+  const [openmenu, setOpenMenu] = useState(false);
   const isMobile = checkIsMobile();
-
-  useEffect(() => {
-    setPositionValue(openMenu ? 0 : -40);
-  }, [openMenu]);
 
   return (
     <Box
@@ -39,12 +34,12 @@ const Navbar = () => {
           alignItems: "center",
         }}
       >
-        <Button
+        <MenuButton
+          openmenu={openmenu}
           onClick={() => setOpenMenu((prev) => !prev)}
           sx={{ padding: 0, margin: 0, borderRadius: "100px" }}
-        >
-          <MenuButton openMenu={openMenu} />
-        </Button>
+        />
+
         <Link to="/" style={{ flex: "0 1 30%" }}>
           <img
             className={classes.logomobile}
@@ -55,7 +50,7 @@ const Navbar = () => {
 
         <Link to="/login">Iniciar sesión</Link>
 
-        <Menu open={openMenu} setOpen={setOpenMenu} />
+        <Menu open={openmenu} setOpen={setOpenMenu} />
       </Box>
       {!isMobile && (
         <Box
@@ -67,7 +62,9 @@ const Navbar = () => {
           }}
         >
           {Object.values(ROUTES).map((item) => (
-            <Link to={item.path}>{item.caption}</Link>
+            <Link key={item.path} to={item.path}>
+              {item.caption}
+            </Link>
           ))}
         </Box>
       )}

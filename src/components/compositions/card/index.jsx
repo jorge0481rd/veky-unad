@@ -80,7 +80,7 @@ const ProductCard = ({ info, isSelected }) => {
 
         <Slide
           direction="right"
-          in={selected}
+          in={selected || false}
           timeout={320}
           container={containerRef.current}
         >
@@ -92,10 +92,18 @@ const ProductCard = ({ info, isSelected }) => {
           onClick={toggleSelected}
           sx={{ minWidth: 30, padding: "4px", position: "relatie" }}
         >
-          <Slide direction="up" in={selected} container={containerRef.current}>
+          <Slide
+            direction="up"
+            in={selected || false}
+            container={containerRef.current}
+          >
             <CheckCircleIcon sx={{ color: "green", position: "absolute" }} />
           </Slide>
-          <Slide direction="up" in={!selected} container={containerRef.current}>
+          <Slide
+            direction="up"
+            in={!selected || false}
+            container={containerRef.current}
+          >
             <AddShoppingCartIcon sx={{ position: "absolute" }} />
           </Slide>
         </Button>
