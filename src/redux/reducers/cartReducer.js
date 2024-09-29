@@ -1,5 +1,18 @@
 const initialState = {
-  items: [],
+  items: [
+    {
+      id: 2,
+      name: "Wireless Headphones black with additional pads and multiple connectors. Supports USB, Bluetooth and Wifi",
+      price: 89.99,
+      qty: 1,
+    },
+    {
+      id: 3,
+      name: "Smartwatch",
+      price: 199.99,
+      qty: 1,
+    },
+  ],
 };
 
 const cartReducer = (state = initialState, action) => {

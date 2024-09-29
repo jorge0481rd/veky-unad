@@ -9,6 +9,7 @@ import MyContainer from "../../compositions/my-container";
 import { Box, Button, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
 import ShoppingBasketIcon from "@mui/icons-material/ShoppingBasket";
+import productImg from "./product_img.jpg";
 
 const Cart = () => {
   const items = useSelector((state) => state.cart.items);
@@ -40,39 +41,48 @@ const Cart = () => {
           <h2>Carrito de compras</h2>
           <div>
             <table className="cart-table">
+              {/* header */}
               <thead>
-                <tr className="thead">
-                  <th></th>
-                  <th>Artículo</th>
-                  <th>Cantidad</th>
-                  <th>Precio</th>
+                <tr className="header-row">
+                  <th className="header-cell"></th>
+                  <th className="header-cell header-cell-name">Artículo</th>
+                  <th className="header-cell">Cantidad</th>
+                  <th className="header-cell header-cell-price">Precio</th>
+                  <th className="header-cell"></th>
                 </tr>
               </thead>
+
+              {/* data */}
               <tbody>
                 {items.map((item) => (
-                  <tr key={item.id}>
-                    <td>
-                      <button onClick={() => dispatch(removeFromCart(item.id))}>
-                        <DeleteIcon sx={{ color: "red", fontSize: "0.9rem" }} />
-                      </button>
+                  <tr key={item.id} className="data-row">
+                    <td className="data-cell">
+                      <img src={productImg} alt="" />
                     </td>
-                    <td>{item.name}</td>
-                    <td>
+                    <td className="data-cell data-cell-name">{item.name}</td>
+                    <td className="data-cell">
                       <QtyControl prodId={item.id} />
                     </td>
-                    <td>{formatPrice(item.price, false)}</td>
+                    <td className="data-cell data-cell-price">
+                      <div>{formatPrice(item.price, false)}</div>
+                    </td>
+                    <td className="data-cell data-cell-actions">
+                      <button onClick={() => dispatch(removeFromCart(item.id))}>
+                        <DeleteIcon sx={{ color: "red", fontSize: "1rem" }} />
+                      </button>
+                    </td>
                   </tr>
                 ))}
               </tbody>
+
+              {/* foot */}
               <tfoot>
-                <tr className="total-row">
-                  <td
-                    colSpan="2"
-                    style={{ textAlign: "right", fontWeight: "bold" }}
-                  >
-                    Precio total:
-                  </td>
-                  <td>{formatPrice(totalPrice)}</td>
+                <tr className="foot-row">
+                  <td className="foot-cell"></td>
+                  <td className="foot-cell"></td>
+                  <td className="foot-cell">Precio total:</td>
+                  <td className="foot-cell">{formatPrice(totalPrice)}</td>
+                  <td className="foot-cell"></td>
                 </tr>
               </tfoot>
             </table>

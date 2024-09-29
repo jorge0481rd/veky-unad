@@ -1,25 +1,51 @@
-.cart-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 20px;
-
-}
-.cart-table th{
-	background: #ccc;
-	padding: 10px;
+.cart-table{
+	width: 100%;
 }
 
-.cart-table td{
-	padding: 10px;
+.header-row{
+	border-top: solid 1px #dedede;
+	border-bottom: solid 2px #dedede;
 }
-.cart-table td:nth-child(3){
+
+.header-cell{
+	padding: .4rem 0;
+}
+
+
+/* data  */
+
+.data-row{
+	border-bottom: solid 1px #dedede;
+}
+
+.data-cell{
+	padding: 1rem 0;
+}
+
+.data-cell img{
+	height: 70px;
+}
+
+.data-cell-actions {
+	padding-left: 1rem;
+	text-align: center;
+}
+
+/* foot */
+
+.foot-row{
+    text-align: right;
+    font-weight: bold;
+    background: #dedede;
+}
+
+
+/* misc */
+
+.data-cell-name, .header-cell-name{
+	width: 35%;
+}
+
+.data-cell-price, .header-cell-price{
 	text-align: right;
-}
-
-.cart-table tbody{
-	border-bottom: solid 1px #ccc;
-}
-
-.cart-table tfoot{
-	border-bottom: double 1px #ccc;
 }
