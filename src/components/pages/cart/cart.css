@@ -46,6 +46,6 @@
 	width: 35%;
 }
 
-.data-cell-price, .header-cell-price{
+.data-cell-price, .header-cell-price, .data-cell-subtotal, .header-cell-subtotal{
 	text-align: right;
 }

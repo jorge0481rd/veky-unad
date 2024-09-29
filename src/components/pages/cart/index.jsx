@@ -1,7 +1,7 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { removeFromCart } from "../../../redux/actions/cartActions";
-import { formatPrice } from "../../../utils/formatPrice";
+import { formatCurrency } from "../../../utils/formatCurrency";
 import "./cart.css";
 import DeleteIcon from "@mui/icons-material/Delete";
 import QtyControl from "../../compositions/qty-control";
@@ -15,7 +15,10 @@ const Cart = () => {
   const items = useSelector((state) => state.cart.items);
   const dispatch = useDispatch();
 
-  const totalPrice = items.reduce((total, item) => total + item.price, 0);
+  const totalPrice = items.reduce((total, item) => {
+    const subtotal = item.price * item.qty;
+    return total + subtotal;
+  }, 0);
 
   return (
     <MyContainer id="cart">
@@ -48,6 +51,7 @@ const Cart = () => {
                   <th className="header-cell header-cell-name">Artículo</th>
                   <th className="header-cell">Cantidad</th>
                   <th className="header-cell header-cell-price">Precio</th>
+                  <th className="header-cell header-cell-subtotal">Subtotal</th>
                   <th className="header-cell"></th>
                 </tr>
               </thead>
@@ -64,11 +68,16 @@ const Cart = () => {
                       <QtyControl prodId={item.id} />
                     </td>
                     <td className="data-cell data-cell-price">
-                      <div>{formatPrice(item.price, false)}</div>
+                      <div>{formatCurrency(item.price, false)}</div>
+                    </td>
+                    <td className="data-cell data-cell-subtotal">
+                      <div>{formatCurrency(item.price * item.qty, false)}</div>
                     </td>
                     <td className="data-cell data-cell-actions">
                       <button onClick={() => dispatch(removeFromCart(item.id))}>
-                        <DeleteIcon sx={{ color: "red", fontSize: "1rem" }} />
+                        <DeleteIcon
+                          sx={{ color: "gray", fontSize: "1.3rem" }}
+                        />
                       </button>
                     </td>
                   </tr>
@@ -80,8 +89,9 @@ const Cart = () => {
                 <tr className="foot-row">
                   <td className="foot-cell"></td>
                   <td className="foot-cell"></td>
+                  <td className="foot-cell"></td>
                   <td className="foot-cell">Precio total:</td>
-                  <td className="foot-cell">{formatPrice(totalPrice)}</td>
+                  <td className="foot-cell">{formatCurrency(totalPrice)}</td>
                   <td className="foot-cell"></td>
                 </tr>
               </tfoot>
