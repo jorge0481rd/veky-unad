@@ -79,9 +79,9 @@ const ProductCard = ({ info, isSelected }) => {
         </Typography>
 
         <Slide
-          direction="up"
+          direction="right"
           in={selected}
-          timeout={400}
+          timeout={320}
           container={containerRef.current}
         >
           <div>

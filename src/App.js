@@ -40,13 +40,13 @@ function App() {
                 display: "flex",
                 flexDirection: "column",
                 flexGrow: 1,
-                minHeight: "100vh",
+                height: "100vh",
               }}
             >
               <Navbar />
               <TitleBar caption="caption" />
               <FloatingCart itemCount={5} />
-              <Box className="content">
+              <Box className="content" sx={{ flex: 1 }}>
                 <Switch>
                   <Route exact path="/">
                     <Home />
