@@ -2,9 +2,11 @@ import React from "react";
 import useMyContext from "../../../context/useMyContext";
 import MyContainer from "../../compositions/my-container";
 import Card from "../../compositions/card";
-import { Box } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import { useSelector } from "react-redux";
+import { useProducts } from "../../../hooks/useProducts";
 
+/*
 const products = [
   {
     id: 1,
@@ -57,11 +59,27 @@ const products = [
     price: 15.99,
   },
 ];
+*/
 
 const Products = () => {
   const { setTitle } = useMyContext();
   setTitle("Productos");
   const items = useSelector((state) => state.cart.items);
+  const { products, loading, error } = useProducts();
+
+  if (loading)
+    return (
+      <MyContainer id="products">
+        <Typography
+          variant="h3"
+          sx={{ width: "100%", textAlign: "center", color: "gray" }}
+        >
+          Cargando...
+        </Typography>
+      </MyContainer>
+    );
+  if (error) return <div>Error: {error}</div>;
+
   return (
     <MyContainer id="products">
       <Box sx={{ display: "flex", flexWrap: "wrap", justifyContent: "center" }}>
