@@ -12,3 +12,4 @@ export const updateQty = ({ id, newQty }) => ({
   type: "INCREASE_QTY",
   payload: { id, newQty },
 });
+

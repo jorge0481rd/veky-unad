@@ -5,28 +5,35 @@ import useMyContext from "../../../context/useMyContext";
 import { loginUser } from "../../../api/index";
 import { useHistory } from "react-router-dom";
 import PersonIcon from "@mui/icons-material/Person";
+import { useDispatch } from "react-redux";
+import { login } from "../../../redux/actions/authActions";
 
-const Login = ({ onLogin }) => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+const Login = () => {
+  const [email, setEmail] = useState("fulano@gmail.com   ");
+  const [password, setPassword] = useState("moreno81");
   const [message, setMessage] = useState("");
   const { setTitle } = useMyContext();
   const history = useHistory();
+  const dispatch = useDispatch()
+
+
 
   setTitle("Iniciar sesión");
 
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const data = await loginUser(email, password);
-      onLogin({ email });
+      const data = await loginUser(email.trim(), password);
+      dispatch(login({ email }));
       setMessage("Inicio de sesión exitoso");
       setEmail("");
       setPassword("");
+      history.push("/");
     } catch (error) {
       setMessage(error.message);
     }
   };
+
 
   return (
     <MyContainer id="login">
@@ -65,14 +72,16 @@ const Login = ({ onLogin }) => {
             history.push("/register");
           }}
           color="inherit"
+          size="small"
         >
-          ¿No te has registrado? Regístrate aquí.
+          ¿No tienes cuenta? Regístrate aquí.
         </Button>
         {message && (
           <Snackbar
             open={Boolean(message)}
             autoHideDuration={6000}
             onClose={() => setMessage("")}
+            anchorOrigin={{ vertical: "top", horizontal: "right" }}
           >
             <Alert
               onClose={() => setMessage("")}

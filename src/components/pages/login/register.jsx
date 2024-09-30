@@ -65,6 +65,7 @@ const Register = () => {
             history.push("/login");
           }}
           color="inherit"
+          size="small"
         >
           ¿Ya tienes cuenta? Inicia sesión aquí.
         </Button>

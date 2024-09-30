@@ -29,7 +29,6 @@ const theme = createTheme({
 });
 
 function App() {
-  const mockLogin = () => console.log("Inicio de sesion exitoso");
   return (
     <MyContextProvider>
       <ThemeProvider theme={theme}>
@@ -65,7 +64,7 @@ function App() {
                     <Cart />
                   </Route>
                   <Route path="/login">
-                    <Login onLogin={mockLogin} />
+                    <Login />
                   </Route>
                   <Route path="/register">
                     <Register />

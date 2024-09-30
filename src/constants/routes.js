@@ -23,10 +23,6 @@ const ROUTES = {
     path: "/cart",
     caption: "Carrito",
   },
-  ACCOUNT: {
-    path: "/account",
-    caption: "Mi Cuenta",
-  },
 };
 
 export default ROUTES;

@@ -44,6 +44,18 @@ const cartReducer = (state = initialState, action) => {
           product.id === action.payload.id ? updatedProduct : product
         ),
       };
+      case "LOGIN_SUCCESS":
+        return {
+          ...state,
+          isAuthenticated: true,
+          user: action.payload,
+        };
+      case "LOGOUT":
+        return {
+          ...state,
+          isAuthenticated: false,
+          user: null,
+        };
     default:
       return state;
   }
