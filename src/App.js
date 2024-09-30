@@ -15,6 +15,7 @@ import store from "./redux/store";
 import Login from "./components/pages/login";
 import Footer from "./components/footer";
 import FloatingCart from "./components/compositions/cart-floating-icon";
+import Register from "./components/pages/login/register";
 
 const theme = createTheme({
   palette: {
@@ -65,6 +66,9 @@ function App() {
                   </Route>
                   <Route path="/login">
                     <Login onLogin={mockLogin} />
+                  </Route>
+                  <Route path="/register">
+                    <Register />
                   </Route>
                 </Switch>
               </Box>

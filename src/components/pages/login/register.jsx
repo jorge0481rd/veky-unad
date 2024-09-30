@@ -2,25 +2,24 @@ import React, { useState } from "react";
 import { Box, TextField, Button, Snackbar, Alert } from "@mui/material";
 import MyContainer from "../../compositions/my-container";
 import useMyContext from "../../../context/useMyContext";
-import { loginUser } from "../../../api/index";
+import { registerUser } from "../../../api/index";
 import { useHistory } from "react-router-dom";
-import PersonIcon from "@mui/icons-material/Person";
+import PersonAddIcon from "@mui/icons-material/PersonAdd";
 
-const Login = ({ onLogin }) => {
+const Register = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
   const { setTitle } = useMyContext();
   const history = useHistory();
 
-  setTitle("Iniciar sesión");
+  setTitle("Registrarse");
 
-  const handleLogin = async (e) => {
+  const handleRegister = async (e) => {
     e.preventDefault();
     try {
-      const data = await loginUser(email, password);
-      onLogin({ email });
-      setMessage("Inicio de sesión exitoso");
+      const data = await registerUser(email, password);
+      setMessage(`Usuario registrado: ${data.email}`);
       setEmail("");
       setPassword("");
     } catch (error) {
@@ -29,16 +28,17 @@ const Login = ({ onLogin }) => {
   };
 
   return (
-    <MyContainer id="login">
+    <MyContainer id="register">
       <Box sx={{ maxWidth: 400, mx: "auto", mt: 5 }}>
-        <PersonIcon
+        <PersonAddIcon
           sx={{
             fontSize: "5rem",
             color: "grey",
             width: "100%",
+            transform: "rotateY(180deg)",
           }}
         />
-        <form onSubmit={handleLogin}>
+        <form onSubmit={handleRegister}>
           <TextField
             fullWidth
             margin="normal"
@@ -57,16 +57,16 @@ const Login = ({ onLogin }) => {
             required
           />
           <Button type="submit" variant="contained" color="primary" fullWidth>
-            Iniciar Sesión
+            Registrarse
           </Button>
         </form>
         <Button
           onClick={() => {
-            history.push("/register");
+            history.push("/login");
           }}
           color="inherit"
         >
-          ¿No te has registrado? Regístrate aquí.
+          ¿Ya tienes cuenta? Inicia sesión aquí.
         </Button>
         {message && (
           <Snackbar
@@ -77,7 +77,7 @@ const Login = ({ onLogin }) => {
             <Alert
               onClose={() => setMessage("")}
               severity={
-                message === "Inicio de sesión exitoso" ? "success" : "error"
+                message.includes("Usuario registrado") ? "success" : "error"
               }
             >
               {message}
@@ -89,4 +89,4 @@ const Login = ({ onLogin }) => {
   );
 };
 
-export default Login;
+export default Register;
