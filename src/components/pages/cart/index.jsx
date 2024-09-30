@@ -9,6 +9,7 @@ import MyContainer from "../../compositions/my-container";
 import { Box, Button, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
 import ShoppingBasketIcon from "@mui/icons-material/ShoppingBasket";
+import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import productImg from "./product_img.jpg";
 
 const Cart = () => {
@@ -97,6 +98,22 @@ const Cart = () => {
               </tfoot>
             </table>
           </div>
+
+          <Link to="/products">
+            <Box
+              sx={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                marginTop: "2rem",
+              }}
+            >
+              <AddShoppingCartIcon sx={{ marginRight: "0.5rem", color: "gray", fontSize: 40 }} />
+              <Typography variant="h4" color="textSecondary">
+                Puedes agregar más productos aquí
+              </Typography>
+            </Box>
+          </Link>
         </Box>
       )}
     </MyContainer>
